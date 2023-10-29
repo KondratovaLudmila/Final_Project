@@ -1,26 +1,30 @@
 from abc import abstractmethod, ABC
 from menu import Menu
 
-class UserInterface(ABC):
+class InputInterface(ABC):
     @abstractmethod
     def data_input(self):
         """Returns user data or actions"""
-    
+
+class OutputInterface(ABC):
     @abstractmethod
-    def data_output(self, data):
+    def data_output(self):
         """Shows proccessed data to user"""
 
-
-class ConsoleUserInterface(UserInterface):
-    def __init__(self):
-        self.menu = Menu()
-
+class ConsoleInpute(InputInterface):
     def data_input(self):
-        user_input = input()
-        
-        return user_input
-    
+        data = input()
+        return data
+
+class ConsoleOutput(OutputInterface):
     def data_output(self, data):
         print(data)
+
+
+class BotInterface(ConsoleInpute,ConsoleOutput ):
+    def __init__(self):
+        self.menu = Menu()
+        self.exit = False
+        self.command = None
 
         

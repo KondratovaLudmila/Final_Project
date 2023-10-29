@@ -1,27 +1,25 @@
 from handler import CommandCreator, Command
-from interfaces import ConsoleUserInterface
-     
+from interfaces import BotInterface
 
 def main():
-    ui = ConsoleUserInterface()
+    ui = BotInterface()
     handler = CommandCreator()
     ui.data_output(ui.menu.navigate("Main"))
-    command: Command = None
 
     while not ui.menu.exit:
         output_data = ""
         user_data = ui.data_input()
 
-        if command is None:
+        if ui.command is None:
             output_data = ui.menu.navigate(user_data)
-            command = handler.create(user_data)
+            ui.command = handler.create(user_data)
         else:
-            command.set_args(user_data)
+            ui.command.set_args(user_data)
         
-        if command is not None:
-            result = command.execute()
-            if command.success:
-                command = None
+        if ui.command is not None:
+            result = ui.command.execute()
+            if ui.command.success:
+                ui.command = None
         if not output_data:
             output_data = result
 

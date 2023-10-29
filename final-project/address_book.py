@@ -4,6 +4,7 @@ from pickle import dump, load
 from abc import abstractmethod, ABC
 from re import search
 
+
 class Target(ABC):
     pagination = None
     __file_name = None
@@ -108,7 +109,7 @@ class Record:
     def __str__(self) -> str:
         return f"Contact name: {self.name.value}, "\
                         f"phones: {'; '.join(p.value for p in self.phones)}, "\
-                        f"birthday: {self.birthday if self.birthday else ''}"\
+                        f"birthday: {self.birthday if self.birthday else ''}, "\
                         f"email: {self.email}"
         
     def find_phone(self, value: str, strict=True) -> Phone:
