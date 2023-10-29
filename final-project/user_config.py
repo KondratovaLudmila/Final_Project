@@ -14,9 +14,13 @@ class Config(UserDict):
     @config_file.setter
     def config_file(self, config_file: str) -> None:
         config_path = Path(config_file)
+        
         if config_path.exists():
             self.__config_file = config_file
             self.read_config()
+        else:
+            with open(config_path, "w") as f:
+                f.write("123")
 
 
     def read_config(self) -> None:

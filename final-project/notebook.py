@@ -47,7 +47,6 @@ class Note:
 class NoteBook(Target, UserDict):
     def __init__(self, file_name: str=None) -> None:
         self.tag_cloud = set()  #all unique tags used in notebook
-        self.__file_name = None
         self.file_name = file_name
 
     @property
@@ -66,10 +65,6 @@ class NoteBook(Target, UserDict):
         self.data[note.id] = note
         self.__update_tag_cloud()
         self.save()
-
-    def find_id(self, id: str) -> Note:
-        # find note by it id
-        return self.data.get(id)
 
     def delete(self, id: str) -> None:
         if id not in self.data:

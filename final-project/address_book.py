@@ -6,6 +6,7 @@ from re import search
 
 class Target(ABC):
     pagination = None
+    __file_name = None
     
     @abstractmethod
     def add(self):
@@ -101,10 +102,8 @@ class Record:
         self.name = name
         self.phones = []
         self.add_phone(phone)
-        self.birthday = None
-        self.add_birthday(birthday)
-        self.email = None
-        self.add_email(email)
+        self.birthday = birthday
+        self.email = email
 
     def __str__(self) -> str:
         return f"Contact name: {self.name.value}, "\
@@ -141,10 +140,6 @@ class Record:
             phone.value = new_value
         else:
             raise ValueError("Phone doesn't exist")
-    
-    def add_birthday(self, birthday: Birthday):
-        if birthday:
-            self.birthday = birthday
 
     def days_to_birthday(self) -> int:
         if self.birthday:
@@ -159,10 +154,6 @@ class Record:
             delta = new_birthday - cur_date
             
             return delta.days
-        
-    def add_email(self, email: Email):
-        if email:
-            self.email = email
 
 class Pagination:
     DEFAULT_PER_PAGE = 3
@@ -188,7 +179,6 @@ class Pagination:
 
 class AddressBook(UserDict):
     def __init__(self, file_name: str = None):
-        self.__file_name = None
         self.file_name = file_name
 
     @property

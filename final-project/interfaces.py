@@ -2,8 +2,6 @@ from abc import abstractmethod, ABC
 from menu import Menu
 
 class UserInterface(ABC):
-    exit = False
-
     @abstractmethod
     def data_input(self):
         """Returns user data or actions"""
@@ -15,8 +13,7 @@ class UserInterface(ABC):
 
 class ConsoleUserInterface(UserInterface):
     def __init__(self):
-        self.Menu = Menu()
-        self.command = None
+        self.menu = Menu()
 
     def data_input(self):
         user_input = input()

@@ -358,7 +358,7 @@ class CommandCreator:
         elif cmd.name == "find":
             if isinstance(cmd.target, AddressBook):
                 cmd._args = {
-                            "search": None
+                            "search": None,
                             }
             elif isinstance(cmd.target, NoteBook):
                 cmd._args = {

@@ -5,20 +5,20 @@ from interfaces import ConsoleUserInterface
 def main():
     ui = ConsoleUserInterface()
     handler = CommandCreator()
-    ui.data_output(ui.Menu.navigate("Main"))
+    ui.data_output(ui.menu.navigate("Main"))
     command: Command = None
 
-    while not ui.Menu.close:
+    while not ui.menu.exit:
         output_data = ""
         user_data = ui.data_input()
 
         if command is None:
-            output_data = ui.Menu.navigate(user_data)
+            output_data = ui.menu.navigate(user_data)
             command = handler.create(user_data)
         else:
             command.set_args(user_data)
         
-        if not command is None:
+        if command is not None:
             result = command.execute()
             if command.success:
                 command = None
