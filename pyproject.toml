@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "final_project"
+version = "1.0.0"
+description = "simple CLI bot for contacts and notes"
+authors = ["group5"]
+license = "MIT"
+readme = "README.md"
+packages = [
+        {include = "final_project"},
+    ]
+include = ["bot_config.txt"]
+
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pyaudio = "^0.2.13"
+vosk = "^0.3.45"
+
+[tool.poetry.scripts]
+bot-cli = "final_project.main:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

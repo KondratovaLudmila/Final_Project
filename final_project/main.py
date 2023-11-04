@@ -1,5 +1,5 @@
-from handler import CommandCreator, Command
-from interfaces import BotInterface
+from final_project.handler import CommandCreator
+from final_project.interfaces import BotInterface
 
 def main():
     ui = BotInterface()
@@ -9,6 +9,7 @@ def main():
     while not ui.menu.exit:
         output_data = ""
         user_data = ui.data_input()
+        user_data = ui.find_closest_match(user_data, handler.commands.keys())
 
         if ui.command is None:
             output_data = ui.menu.navigate(user_data)

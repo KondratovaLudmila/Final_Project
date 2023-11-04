@@ -1,7 +1,7 @@
-from address_book import *
-from notebook import *
-from user_config import Config
-from arg_handlers import *
+from final_project.address_book import *
+from final_project.notebook import *
+from final_project.user_config import Config
+from final_project.arg_handlers import *
 from abc import abstractmethod, ABC
 
 config = Config("bot_config.txt")

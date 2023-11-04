@@ -4,4 +4,4 @@ addressbook_file=phone_book.bin
 account_sid=ACb5c2ef81d62b89df899d7eb7a74be13d
 auth_token=e4214bb0c132b3e126c41cf4fe6ba918
 account_phone=+16173796725
-help_file=help.txt
+recognization_model=vosk-model-small-en-us-0.15

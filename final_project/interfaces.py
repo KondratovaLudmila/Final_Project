@@ -1,5 +1,6 @@
 from abc import abstractmethod, ABC
-from menu import Menu
+import difflib
+from final_project.menu import Menu
 
 class InputInterface(ABC):
     @abstractmethod
@@ -19,12 +20,20 @@ class ConsoleInpute(InputInterface):
 class ConsoleOutput(OutputInterface):
     def data_output(self, data):
         print(data)
-
-
-class BotInterface(ConsoleInpute,ConsoleOutput ):
+        
+class BotInterface(ConsoleInpute, ConsoleOutput):
     def __init__(self):
+        super().__init__()
         self.menu = Menu()
         self.exit = False
         self.command = None
+
+    def find_closest_match(self, user_input, commands):
+        closest_match = difflib.get_close_matches(
+            user_input, commands, n=1, cutoff=0.6)
+        if closest_match:
+            return closest_match[0]
+        else:
+            return user_input
 
         

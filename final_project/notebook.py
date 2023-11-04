@@ -1,7 +1,7 @@
 from datetime import datetime
 from collections import UserDict
 from pickle import dump, load
-from address_book import Pagination, Target
+from final_project.address_book import Pagination, Target
 
 DATETIME_FORMAT = "%H:%M:%S %d.%m.%Y"
 
